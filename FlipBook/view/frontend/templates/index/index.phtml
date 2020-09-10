@@ -1,0 +1,21 @@
+<div class="flip-books">
+<?php $collection = $this->getCollection(); ?>
+<form name="book" action="" method="post">
+<?php foreach ($collection as $book): ?> 
+		<div class="book-details">
+		<div class="book-thumb">
+
+			<ul class="flip-book effect">
+			    <li>
+			       <h2 class="zero"><a href="">Click Here To Open Book</a></h2>
+			    </li>
+			    <li><a name="id" href="<?php echo $this->getUrl('flip/book', array('id' => $book->getFlipId())); ?>"><?php echo $this->getThumbnail($book); ?></a></li>
+			</ul>
+		</div>
+		<div class="book-title"><?php echo $book->getTitle(); ?></div>
+		<div class="book-author"><?php echo $book->getAuthor(); ?></div>
+		<div class="book-description"><?php echo $book->getDescription(); ?></div>
+		</div>
+<?php endforeach; ?>
+</form>
+	</div>

@@ -1,0 +1,25 @@
+{
+    "name": "book/module-flip",
+    "description": "",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        },
+        {
+            "name": "Prince Patel",
+            "email": "prince.patel@hiddenbrains.in"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Book\\Flip\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

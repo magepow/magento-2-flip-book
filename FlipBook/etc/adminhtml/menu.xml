@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<update id="magepow" module="Magepow_FlipBook" resource="Magento_Backend::content" sortOrder="10" title="Magepow"/>
+		<add  id="magepow::book_flip" module="Magepow_FlipBook" parent="magepow" action="book_flip/flip/index" resource="Magento_Backend::content" sortOrder="10" title="Manage Books"/>
+		<add id="magepow::book_flip_setting" module="Magepow_FlipBook" parent="magepow" action="adminhtml/system_config/edit/section/magepow_flipbook" resource="Magento_Backend::content" sortOrder="20" title="Flip Book Settings"/>
+	</menu>
+</config>

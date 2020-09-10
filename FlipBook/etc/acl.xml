@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Magepow_FlipBook::flip" sortOrder="10" title="flip">
+					<resource id="Magepow_FlipBook::flip_save" sortOrder="10" title="Save flip"/>
+					<resource id="Magepow_FlipBook::flip_delete" sortOrder="20" title="Delete flip"/>
+					<resource id="Magepow_FlipBook::flip_update" sortOrder="30" title="Update flip"/>
+					<resource id="Magepow_FlipBook::flip_view" sortOrder="40" title="View flip"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

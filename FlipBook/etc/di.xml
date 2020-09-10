@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<virtualType name="Magepow\FlipBook\Model\ResourceModel\Flip\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">book_flip</argument>
+			<argument name="resourceModel" xsi:type="string">Magepow\FlipBook\Model\ResourceModel\Flip\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="book_flip_grid_data_source" xsi:type="string">Magepow\FlipBook\Model\ResourceModel\Flip\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	 <type name="Magento\Framework\View\Element\UiComponent\Argument\Interpreter\ConfigurableObject">
+        <arguments>
+            <argument name="classWhitelist" xsi:type="array">
+                <item name="0" xsi:type="string">Magento\Framework\Data\OptionSourceInterface</item>
+                <item name="1" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface</item>
+                <item name="2" xsi:type="string">Magento\Framework\View\Element\UiComponent\ContextInterface</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
+        <arguments>
+             <argument name="extensions" xsi:type="array">
+                  <item name="allowed" xsi:type="array">
+                       <item name="pdf" xsi:type="number">1</item>
+                  </item>
+             </argument>
+        </arguments>
+   </type>
+</config>
