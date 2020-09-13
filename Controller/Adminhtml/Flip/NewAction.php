@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Adminhtml\Flip;
+namespace Magepow\Flipbook\Controller\Adminhtml\Flip;
 
-class NewAction extends \Magepow\FlipBook\Controller\Adminhtml\Flip
+class NewAction extends \Magepow\Flipbook\Controller\Adminhtml\Flip
 {
 
     protected $resultForwardFactory;

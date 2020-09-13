@@ -2,25 +2,25 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
-			<item name="provider" xsi:type="string">book_flip_form.flip_form_data_source</item>
-			<item name="deps" xsi:type="string">book_flip_form.flip_form_data_source</item>
+			<item name="provider" xsi:type="string">flipbook_form.flip_form_data_source</item>
+			<item name="deps" xsi:type="string">flipbook_form.flip_form_data_source</item>
 		</item>
 		<item name="label" translate="true" xsi:type="string">General Information</item>
 		<item name="config" xsi:type="array">
 			<item name="dataScope" xsi:type="string">data</item>
-			<item name="namespace" xsi:type="string">book_flip_form</item>
+			<item name="namespace" xsi:type="string">flipbook_form</item>
 		</item>
 		<item name="template" xsi:type="string">templates/form/collapsible</item>
 		<item name="buttons" xsi:type="array">
-			<item name="back" xsi:type="string">Magepow\FlipBook\Block\Adminhtml\Flip\Edit\BackButton</item>
-			<item name="delete" xsi:type="string">Magepow\FlipBook\Block\Adminhtml\Flip\Edit\DeleteButton</item>
-			<item name="save" xsi:type="string">Magepow\FlipBook\Block\Adminhtml\Flip\Edit\SaveButton</item>
-			<item name="save_and_continue" xsi:type="string">Magepow\FlipBook\Block\Adminhtml\Flip\Edit\SaveAndContinueButton</item>
+			<item name="back" xsi:type="string">Magepow\Flipbook\Block\Adminhtml\Flip\Edit\BackButton</item>
+			<item name="delete" xsi:type="string">Magepow\Flipbook\Block\Adminhtml\Flip\Edit\DeleteButton</item>
+			<item name="save" xsi:type="string">Magepow\Flipbook\Block\Adminhtml\Flip\Edit\SaveButton</item>
+			<item name="save_and_continue" xsi:type="string">Magepow\Flipbook\Block\Adminhtml\Flip\Edit\SaveAndContinueButton</item>
 		</item>
 	</argument>
 	<dataSource name="flip_form_data_source">
 		<argument name="dataProvider" xsi:type="configurableObject">
-			<argument name="class" xsi:type="string">Magepow\FlipBook\Model\Flip\DataProvider</argument>
+			<argument name="class" xsi:type="string">Magepow\Flipbook\Model\Flip\DataProvider</argument>
 			<argument name="name" xsi:type="string">flip_form_data_source</argument>
 			<argument name="primaryFieldName" xsi:type="string">flip_id</argument>
 			<argument name="requestFieldName" xsi:type="string">flip_id</argument>
@@ -57,22 +57,6 @@
 				</item>
 			</argument>
 		</field>
-		<field name="category">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="dataType" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">category</item>
-					<item name="formElement" xsi:type="string">select</item>
-					<item name="options" xsi:type="string">Magepow\FlipBook\Model\Category\Attribute\Source\Category</item>
-					<item name="source" xsi:type="string">flip</item>
-					<item name="sortOrder" xsi:type="number">20</item>
-					<item name="dataScope" xsi:type="string">category</item>
-					<item name="validation" xsi:type="array">
-						<item name="required-entry" xsi:type="boolean">false</item>
-					</item>
-				</item>
-			</argument>
-		</field>
 		<field name="author">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
@@ -88,14 +72,14 @@
 				</item>
 			</argument>
 		</field>
-		<field name="upload">
+		<field name="book">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string">Upload</item>
+                    <item name="label" xsi:type="string">Book</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="formElement" xsi:type="string">fileUploader</item>
                     <item name="uploaderConfig" xsi:type="array">
-                        <item name="url" xsi:type="url" path="book_flip/flip/upload"/>
+                        <item name="url" xsi:type="url" path="flipbook/flip/book"/>
                     </item>
                 </item>
             </argument>

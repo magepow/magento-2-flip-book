@@ -4,7 +4,7 @@
  * Copyright © 2015 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magepow\FlipBook\Controller\Adminhtml\Index;
+namespace Magepow\Flipbook\Controller\Adminhtml\Index;
 
 class Index extends \Magento\Backend\App\Action
 {
@@ -32,7 +32,7 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $model = $this->_objectManager->create('Magepow\FlipBook\Model\Index');
+        $model = $this->_objectManager->create('Magepow\Flipbook\Model\Index');
         $id = $this->getRequest()->getParam('id');
         if ($id) {
             $model->load($id);

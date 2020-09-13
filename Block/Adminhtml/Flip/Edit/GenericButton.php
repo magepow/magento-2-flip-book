@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Magepow\FlipBook\Block\Adminhtml\Flip\Edit;
+namespace Magepow\Flipbook\Block\Adminhtml\Flip\Edit;
 
 use Magento\Backend\Block\Widget\Context;
 

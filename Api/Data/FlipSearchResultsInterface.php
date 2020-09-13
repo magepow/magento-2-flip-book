@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Magepow\FlipBook\Api\Data;
+namespace Magepow\Flipbook\Api\Data;
 
 interface FlipSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
 {
@@ -9,14 +9,14 @@ interface FlipSearchResultsInterface extends \Magento\Framework\Api\SearchResult
 
     /**
      * Get flip list.
-     * @return \Magepow\FlipBook\Api\Data\FlipInterface[]
+     * @return \Magepow\Flipbook\Api\Data\FlipInterface[]
      */
     
     public function getItems();
 
     /**
      * Set title list.
-     * @param \Magepow\FlipBook\Api\Data\FlipInterface[] $items
+     * @param \Magepow\Flipbook\Api\Data\FlipInterface[] $items
      * @return $this
      */
     

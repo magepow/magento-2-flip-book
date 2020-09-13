@@ -1,20 +1,19 @@
 <?php
 
+namespace Magepow\Flipbook\Model;
 
-namespace Magepow\FlipBook\Model;
-
-use Magepow\FlipBook\Model\ResourceModel\Flip as ResourceFlip;
-use Magepow\FlipBook\Api\Data\FlipSearchResultsInterfaceFactory;
-use Magepow\FlipBook\Api\FlipRepositoryInterface;
-use Magepow\FlipBook\Api\Data\FlipInterfaceFactory;
-use Magepow\FlipBook\Model\ResourceModel\Flip\CollectionFactory as FlipCollectionFactory;
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Api\DataObjectHelper;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Api\SortOrder;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Store\Model\StoreManagerInterface;
+use Magepow\Flipbook\Api\Data\FlipSearchResultsInterfaceFactory;
+use Magepow\Flipbook\Api\FlipRepositoryInterface;
+use Magepow\Flipbook\Api\Data\FlipInterfaceFactory;
+use Magepow\Flipbook\Model\ResourceModel\Flip as ResourceFlip;
+use Magepow\Flipbook\Model\ResourceModel\Flip\CollectionFactory as FlipCollectionFactory;
 
 class FlipRepository implements flipRepositoryInterface
 {
@@ -69,7 +68,7 @@ class FlipRepository implements flipRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function save(\Magepow\FlipBook\Api\Data\FlipInterface $flip)
+    public function save(\Magepow\Flipbook\Api\Data\FlipInterface $flip)
     {
         try {
             $this->resource->save($flip);
@@ -135,11 +134,11 @@ class FlipRepository implements flipRepositoryInterface
             $this->dataObjectHelper->populateWithArray(
                 $flipData,
                 $flipModel->getData(),
-                'Magepow\FlipBook\Api\Data\FlipInterface'
+                'Magepow\Flipbook\Api\Data\FlipInterface'
             );
             $items[] = $this->dataObjectProcessor->buildOutputDataArray(
                 $flipData,
-                'Magepow\FlipBook\Api\Data\FlipInterface'
+                'Magepow\Flipbook\Api\Data\FlipInterface'
             );
         }
         $searchResults->setItems($items);
@@ -149,7 +148,7 @@ class FlipRepository implements flipRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function delete(\Magepow\FlipBook\Api\Data\FlipInterface $flip)
+    public function delete(\Magepow\Flipbook\Api\Data\FlipInterface $flip)
     {
         try {
             $this->resource->delete($flip);

@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Adminhtml\Flip;
+namespace Magepow\Flipbook\Controller\Adminhtml\Flip;
 
-class Delete extends \Magepow\FlipBook\Controller\Adminhtml\Flip
+class Delete extends \Magepow\Flipbook\Controller\Adminhtml\Flip
 {
 
     /**
@@ -20,7 +20,7 @@ class Delete extends \Magepow\FlipBook\Controller\Adminhtml\Flip
         if ($id) {
             try {
                 // init model and delete
-                $model = $this->_objectManager->create('Magepow\FlipBook\Model\Flip');
+                $model = $this->_objectManager->create('Magepow\Flipbook\Model\Flip');
                 $model->load($id);
                 $model->delete();
                 // display success message

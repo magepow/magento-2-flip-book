@@ -1,6 +1,6 @@
 <?php
  
-namespace Magepow\FlipBook\Block\Adminhtml\Flip\Edit;
+namespace Magepow\Flipbook\Block\Adminhtml\Flip\Edit;
  
 use Magento\Backend\Block\Widget\Form\Generic;
  
@@ -31,7 +31,7 @@ class Form extends Generic
     protected function _prepareForm()
     {
 
-        $model = $this->_coreRegistry->registry('book_flip_flip');
+        $model = $this->_coreRegistry->registry('flipbook_flip');
 
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create(
@@ -50,48 +50,54 @@ class Form extends Generic
             ['legend' => __('General Information'), 'class' => 'fieldset-wide']
         );
 
-        if ($model->getFlipId()) {
-           $fieldset->addField('flip_id', 'hidden', ['name' => 'flip_id']);
+        if ($model->getEntityId()) {
+            $fieldset->addField('entity_id', 'hidden', ['name' => 'entity_id']);
         }
 
-        $fieldset->addField(
-            'title',
-            'text',
-            ['name' => 'title', 'label' => __('Name'), 'title' => __('Name'), 'required' => true]
+        $fieldset->addField('title','text',
+            [
+                'name' => 'title', 
+                'label' => __('Name'), 
+                'title' => __('Name'), 
+                'required' => true
+            ]
         );
+
+        $fieldset->addField('thumbnail', 'image', 
+            [
+                'name' => 'thumbnail', 
+                'label' => __('Thumbnail'), 
+                'title' => __('Thumbnail')
+            ]
+        );
+
         $fieldset->addType(
-        'image',
-        '\Magepow\FlipBook\Block\Adminhtml\Flip\Renderer\Image'
-        );
-
-        $fieldset->addField(
-            'thumbnail',
-            'image',
-            ['name' => 'thumbnail', 'label' => __('Thumbnail'), 'title' => __('Thumbnail')]
-        );
-
-        $fieldset->addField(
-            'upload',
-            'image',
-            ['name' => 'upload', 'label' => __('Upload'), 'title' => __('Upload')]
+            'pdf',
+            '\Magepow\Flipbook\Block\Adminhtml\Flip\Renderer\Pdf'
         );
         
-        $fieldset->addField(
-            'author',
-            'text',
-            ['name' => 'author', 'label' => __('Author'), 'title' => __('Author')]
+        $fieldset->addField('book','pdf',
+            [
+                'name' => 'book', 
+                'label' => __('Book'), 
+                'title' => __('Book')
+            ]
+        );
+        
+        $fieldset->addField('author','text',
+            [
+                'name' => 'author', 
+                'label' => __('Author'), 
+                'title' => __('Author')
+            ]
         );
 
-        $fieldset->addField(
-            'pages',
-            'text',
-            ['name' => 'pages', 'label' => __('Page To Display'), 'title' => __('Page To Display'), 'required' => true, 'style' => 'width:100px']
-        );
-
-        $fieldset->addField(
-            'description',
-            'textarea',
-            ['name' => 'description', 'label' => __('Description'), 'title' => __('Description')]
+        $fieldset->addField('description','textarea',
+            [
+                'name' => 'description', 
+                'label' => __('Description'), 
+                'title' => __('Description')
+            ]
         );
 
         $form->setValues($model->getData());

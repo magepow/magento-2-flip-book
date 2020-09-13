@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Magepow\FlipBook\Model\Flip;
+namespace Magepow\Flipbook\Model\Flip;
 
-use Magepow\FlipBook\Model\ResourceModel\Flip\CollectionFactory;
+use Magepow\Flipbook\Model\ResourceModel\Flip\CollectionFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
@@ -54,13 +54,13 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         foreach ($items as $model) {
             $this->loadedData[$model->getId()] = $model->getData();
         }
-        $data = $this->dataPersistor->get('book_flip_flip');
+        $data = $this->dataPersistor->get('flipbook_flip');
         
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
-            $this->dataPersistor->clear('book_flip_flip');
+            $this->dataPersistor->clear('flipbook_flip');
         }
         
         return $this->loadedData;

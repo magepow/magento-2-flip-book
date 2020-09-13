@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Adminhtml;
+namespace Magepow\Flipbook\Controller\Adminhtml;
 
 abstract class Flip extends \Magento\Backend\App\Action
 {

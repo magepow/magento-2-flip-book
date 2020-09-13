@@ -1,5 +1,5 @@
 <?php
-namespace Magepow\FlipBook\Ui\Component\Listing\Column;
+namespace Magepow\Flipbook\Ui\Component\Listing\Column;
 
 use Magento\Catalog\Helper\Image;
 use Magento\Framework\UrlInterface;
@@ -56,13 +56,13 @@ class Thumbnail extends Column
                 if($item[$fieldName] != '') {
                     $url = $this->storeManager->getStore()->getBaseUrl(
                         \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-                    ).'book/'.$item[$fieldName];
+                    ) . $item[$fieldName];
                 }
                 $item[$fieldName . '_src'] = $url;
                 $item[$fieldName . '_alt'] = $item['title'];
                 $item[$fieldName . '_link'] = $this->urlBuilder->getUrl(
-                    'book_flip/flip/edit',
-                    ['flip_id' => $item['flip_id']]
+                    'flipbook/flip/edit',
+                    ['entity_id' => $item['entity_id']]
                 );
                 $item[$fieldName . '_orig_src'] = $url;
             }

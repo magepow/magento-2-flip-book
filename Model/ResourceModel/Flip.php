@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Magepow\FlipBook\Model\ResourceModel;
+namespace Magepow\Flipbook\Model\ResourceModel;
 
 class Flip extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
@@ -13,6 +13,6 @@ class Flip extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('book_flip', 'flip_id');
+        $this->_init('magepow_flipbook', 'entity_id');
     }
 }

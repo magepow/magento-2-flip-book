@@ -1,10 +1,7 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
 	<router id="admin">
-		<route frontName="book_flip" id="book_flip">
-			<module before="Magento_Backend" name="Magepow_FlipBook"/>
-		</route>
-		<route frontName="flip" id="flip">
+		<route frontName="flipbook" id="flipbook">
 			<module before="Magento_Backend" name="Magepow_FlipBook"/>
 		</route>
 	</router>

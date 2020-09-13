@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Adminhtml\Flip;
+namespace Magepow\Flipbook\Controller\Adminhtml\Flip;
 
 class InlineEdit extends \Magento\Backend\App\Action
 {
@@ -40,7 +40,7 @@ class InlineEdit extends \Magento\Backend\App\Action
             } else {
                 foreach (array_keys($postItems) as $modelid) {
                     /** @var \Magento\Cms\Model\Block $block */
-                    $model = $this->_objectManager->create('Magepow\FlipBook\Model\Flip')->load($modelid);
+                    $model = $this->_objectManager->create('Magepow\Flipbook\Model\Flip')->load($modelid);
                     try {
                         $model->setData(array_merge($model->getData(), $postItems[$modelid]));
                         $model->save();

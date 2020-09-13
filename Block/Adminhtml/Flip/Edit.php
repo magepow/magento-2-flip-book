@@ -1,5 +1,5 @@
 <?php
-namespace Magepow\FlipBook\Block\Adminhtml\Flip;
+namespace Magepow\Flipbook\Block\Adminhtml\Flip;
  
 use Magento\Backend\Block\Widget\Form\Container;
  
@@ -34,12 +34,12 @@ class Edit extends Container
     protected function _construct()
     {
         $this->_objectId = 'id';
-        $this->_blockGroup = 'Magepow_FlipBook';
+        $this->_blockGroup = 'Magepow_Flipbook';
         $this->_controller = 'adminhtml_flip';
         
         parent::_construct();
         
-        if ($this->_isAllowedAction('Magepow_FlipBook::flip_save')) {
+        if ($this->_isAllowedAction('Magepow_Flipbook::flip_save')) {
             $this->buttonList->update('save', 'label', __('Save Book'));
             $this->buttonList->add(
                 'saveandcontinue',

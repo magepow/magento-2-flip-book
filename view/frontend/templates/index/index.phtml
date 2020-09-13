@@ -1,21 +1,19 @@
-<div class="flip-books">
-<?php $collection = $this->getCollection(); ?>
-<form name="book" action="" method="post">
-<?php foreach ($collection as $book): ?> 
-		<div class="book-details">
+<?php 
+$books = $this->getCollection();
+if(!$books) return;
+?>
+<div class="flipbooks">
+<?php foreach ($books as $book): ?>
+	<div class="book-details">
 		<div class="book-thumb">
-
-			<ul class="flip-book effect">
-			    <li>
-			       <h2 class="zero"><a href="">Click Here To Open Book</a></h2>
-			    </li>
-			    <li><a name="id" href="<?php echo $this->getUrl('flip/book', array('id' => $book->getFlipId())); ?>"><?php echo $this->getThumbnail($book); ?></a></li>
-			</ul>
+			<div class="flip-book effect">
+				<span class="guide"><a href="<?php echo $this->getUrl('flipbook/index/book', array('id' => $book->getEntityId())); ?>"><?= __('Click Here To Open Book') ?></a></span>
+		    	<a href="<?php echo $this->getUrl('flipbook/index/book', array('id' => $book->getEntityId())); ?>"><?php echo $this->getThumbnail($book); ?></a>
+		  	</div>
 		</div>
-		<div class="book-title"><?php echo $book->getTitle(); ?></div>
-		<div class="book-author"><?php echo $book->getAuthor(); ?></div>
+		<h2 class="book-title"><?php echo $book->getTitle(); ?></h2>
+		<h3 class="book-author"><?php echo $book->getAuthor(); ?></h3>
 		<div class="book-description"><?php echo $book->getDescription(); ?></div>
-		</div>
-<?php endforeach; ?>
-</form>
 	</div>
+<?php endforeach; ?>
+</div>

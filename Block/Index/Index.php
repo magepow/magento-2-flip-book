@@ -1,70 +1,40 @@
 <?php
 
-namespace Magepow\FlipBook\Block\Index;
-
-use Magepow\FlipBook\Model\FlipFactory;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Backend\Block\Template\Context;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Store\Model\StoreManagerInterface;
+namespace Magepow\Flipbook\Block\Index;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
 
-	protected $_flipModel;
-    private $_objectManager;
-    protected $_storeManager;
-
+	protected $_flipFactory;
     protected $_urlMedia;
 
 	public function __construct(
-        Context $context,
-        FlipFactory $flipModel,
-        DirectoryList $directoryList,
-        ObjectManagerInterface $objectmanager,
-        StoreManagerInterface $storeManager
+        \Magento\Backend\Block\Template\Context $context,
+        \Magepow\Flipbook\Model\FlipFactory $flipFactory
         
     ) {
-        $this->_flipModel = $flipModel;
-        $this->_objectManager = $objectmanager;
-        $this->directory_list = $directoryList;
-        $this->_storeManager = $storeManager;
+        $this->_flipFactory = $flipFactory;
         parent::__construct($context);
     }
 
 
     public function getCollection()
     {
-        $collection = $this->_flipModel->create();
-        $items = $collection->getCollection();
-        return $items;
+        $flip = $this->_flipFactory->create();
+        $books = $flip->getCollection();
+        return $books;
     }
 
     public function getBook($id)
     {
-        $collection = $this->_flipModel->create();
-        $book = $collection->load($id);
+        $flip = $this->_flipFactory->create();
+        $book = $flip->load($id);
         return $book;
-    }
-
-    public function getBookDir(){
-    	return $this->directory_list->getPath('media').'/book';
-    }
-
-    public function getBookPath($folder){
-    	return $this->getMediaUrl($folder);
-    }
-
-    public function getUploadDir($book)
-    {
-    	$uploadDir = substr($book->getUpload(), 0, -4);
-    	return $uploadDir;
     }
 
     public function getThumbnail($book)
     {
-        $media = $this ->_storeManager-> getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA );
-        $thumbUrl = $media.'book'.$book->getThumbnail();
+        $thumbUrl = $this->getMediaUrl($book->getThumbnail());
         $thumb = "<img class='top' src='".$thumbUrl."'>";
         return $thumb;
 
@@ -74,14 +44,7 @@ class Index extends \Magento\Framework\View\Element\Template
     {
         if(!$this->_urlMedia) $this->_urlMedia = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
 
-        return $this->_urlMedia .'book'. $file;
-    }
-
-    public function getConfig($value)
-    {
-		$config = $this->_objectManager->
-		get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue($value);
-    	return $config;
+        return $this->_urlMedia . $file;
     }
 
 

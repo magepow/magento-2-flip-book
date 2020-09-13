@@ -1,11 +1,12 @@
 <?php
 
 
-namespace Magepow\FlipBook\Setup;
+namespace Magepow\Flipbook\Setup;
 
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\DB\Ddl\Table;
 
 class InstallSchema implements InstallSchemaInterface
 {
@@ -20,69 +21,26 @@ class InstallSchema implements InstallSchemaInterface
         $installer = $setup;
         $installer->startSetup();
 
-        $table_book_flip = $setup->getConnection()->newTable($setup->getTable('book_flip'));
-
-        
-        $table_book_flip->addColumn(
-            'flip_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+        $table = $setup->getConnection()
+            ->newTable($setup->getTable('magepow_flipbook'))->addColumn(
+            'entity_id',
+            Table::TYPE_INTEGER,
             null,
             array('identity' => true,'nullable' => false,'primary' => true,'unsigned' => true,),
             'Entity ID'
-        );
-        
+            )
+            ->addColumn('title', Table::TYPE_TEXT, null, [], 'Title')
+            ->addColumn('author', Table::TYPE_TEXT, null, [], 'Author')
+            ->addColumn('description', Table::TYPE_TEXT, null, [], 'Description')
+            ->addColumn('thumbnail', Table::TYPE_TEXT, null, [], 'Thumbnail')
+            ->addColumn('book', Table::TYPE_TEXT, null, [], 'Book')
+            ->addColumn('status', Table::TYPE_SMALLINT, null, ['nullable' => false, 'default' => '1'], 'Status')
+            ->addColumn('created_time', Table::TYPE_DATETIME, null, ['nullable' => true, 'default' => null], 'Created Time')
+            ->addColumn('update_time', Table::TYPE_DATETIME, null, ['nullable' => true, 'default' => null], 'Update Time')
+            ->addIndex($installer->getIdxName('entity_id', ['entity_id']), ['entity_id'])
+            ->setComment('Magepow Flipbook');
 
-        
-        $table_book_flip->addColumn(
-            'title',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
-            [],
-            'title'
-        );
-        
-        $table_book_flip->addColumn(
-            'author',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
-            [],
-            'author'
-        );
-        
-        $table_book_flip->addColumn(
-            'description',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
-            [],
-            'description'
-        );
-
-        $table_book_flip->addColumn(
-            'thumbnail',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
-            [],
-            'thumbnail'
-        );
-        
-        $table_book_flip->addColumn(
-            'upload',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
-            [],
-            'upload'
-        );
-
-        $table_book_flip->addColumn(
-            'pages',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-            null,
-            [],
-            'pages'
-        );
-        
-
-        $setup->getConnection()->createTable($table_book_flip);
+        $setup->getConnection()->createTable($table);
 
         $setup->endSetup();
     }

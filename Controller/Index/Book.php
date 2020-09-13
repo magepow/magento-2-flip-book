@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Book;
+namespace Magepow\Flipbook\Controller\Index;
 
-class Index extends \Magento\Framework\App\Action\Action
+class Book extends \Magento\Framework\App\Action\Action
 {
 
     protected $resultPageFactory;

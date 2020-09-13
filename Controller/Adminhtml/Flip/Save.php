@@ -1,17 +1,18 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Adminhtml\Flip;
+namespace Magepow\Flipbook\Controller\Adminhtml\Flip;
 
 use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Save extends \Magento\Backend\App\Action
 {
 
+    protected $_mediaDir = 'magepow/flipbook';
+
     protected $dataPersistor;
 
-    protected $messageManager;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -21,12 +22,10 @@ class Save extends \Magento\Backend\App\Action
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor,
-        \Magento\Framework\App\Filesystem\DirectoryList $directoryList,
-        \Magento\Framework\Message\ManagerInterface $messageManager
+        \Magento\Framework\App\Filesystem\DirectoryList $directoryList
     ) {
         $this->dataPersistor = $dataPersistor;
         $this->directory_list = $directoryList;
-        $this->messageManager = $messageManager;  
         parent::__construct($context, $coreRegistry);
     }
 
@@ -42,51 +41,93 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
     
         if ($data) {
-            $id = $this->getRequest()->getParam('flip_id');
+            $id = $this->getRequest()->getParam('entity_id');
     
-            $model = $this->_objectManager->create('Magepow\FlipBook\Model\Flip')->load($id);
+            $model = $this->_objectManager->create('Magepow\Flipbook\Model\Flip')->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addError(__('This Flip no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
 
-            if (isset($_FILES['upload']) && $_FILES['upload']['name'] != '') {
-                $uploader = $this->_objectManager->get('Magepow\FlipBook\Model\Flip\Upload');
-                $backgroundModel = $this->_objectManager->get('Magepow\FlipBook\Model\Flip\Image');
-                $uploadZip = $uploader->uploadFileAndGetName('upload', $backgroundModel->getBaseDir(), $data);
-                
-                $uploadPath = substr($uploadZip, 0, strrpos($uploadZip, '/'));
+            if (isset($_FILES['thumbnail']) && isset($_FILES['thumbnail']['name']) && strlen($_FILES['thumbnail']['name'])) {
+                /*
+                 * Save image upload
+                 */
+                try {
+                    $uploader = $this->_objectManager->create(
+                        'Magento\MediaStorage\Model\File\Uploader',
+                        ['fileId' => 'thumbnail']
+                    );
+                    $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
 
-                $file = $this->directory_list->getPath('media').'/book'.$uploadZip;
-            
-                $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
-                 
-                $zip = new \ZipArchive();
-                
-                $res = $zip->open($file);
-                
-                if ($res === TRUE) {
-                  $zip->extractTo($path);
-                  $extfolder = $zip->getNameIndex(0);
-                  $zip->close();
-                  $data['upload'] = $uploadPath.'/'.$extfolder;
-                  unlink($file);
-                } else {
-                  $data['upload'] = $uploadZip;
+                    /** @var \Magento\Framework\Image\Adapter\AdapterInterface $imageAdapter */
+                    $imageAdapter = $this->_objectManager->get('Magento\Framework\Image\AdapterFactory')->create();
+
+                    $uploader->addValidateCallback('flipbook_thumbnail', $imageAdapter, 'validateUploadFile');
+                    $uploader->setAllowRenameFiles(true);
+                    $uploader->setFilesDispersion(true);
+
+                    /** @var \Magento\Framework\Filesystem\Directory\Read $mediaDirectory */
+                    $mediaDirectory = $this->_objectManager->get('Magento\Framework\Filesystem')
+                        ->getDirectoryRead(DirectoryList::MEDIA);
+                    $result = $uploader->save(
+                        $mediaDirectory->getAbsolutePath($this->_mediaDir)
+                    );
+                    $data['thumbnail'] = $this->_mediaDir . $result['file'];
+                } catch (\Exception $e) {
+                    if ($e->getCode() == 0) {
+                        $this->messageManager->addError($e->getMessage());
+                    }
                 }
-
-                
-
-            }else{
-                $data['upload'] = $data['upload']['value'] ?? "";
+            } else {
+                if (isset($data['thumbnail']) && isset($data['thumbnail']['value'])) {
+                    if (isset($data['thumbnail']['delete'])) {
+                        $data['thumbnail'] = null;
+                        $data['delete_thumbnail'] = true;
+                    } elseif (isset($data['thumbnail']['value'])) {
+                        $data['thumbnail'] = $data['thumbnail']['value'];
+                    } else {
+                        $data['thumbnail'] = null;
+                    }
+                }
             }
 
-            if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['name'] != '') {
-                    $uploader = $this->_objectManager->get('Magepow\FlipBook\Model\Flip\Upload');
-                    $backgroundModel = $this->_objectManager->get('Magepow\FlipBook\Model\Flip\Image');
-                    $data['thumbnail'] = $uploader->uploadFileAndGetName('thumbnail', $backgroundModel->getBaseDir(), $data);
-            }else{
-                $data['thumbnail'] = $data['thumbnail']['value'];
+            if (isset($_FILES['book']) && isset($_FILES['book']['name']) && strlen($_FILES['book']['name'])) {
+                /*
+                 * Save image upload
+                 */
+                try {
+                    $uploader = $this->_objectManager->create(
+                        'Magento\MediaStorage\Model\File\Uploader',
+                        ['fileId' => 'book']
+                    );
+                    $uploader->setAllowedExtensions(['pdf']);
+                    $uploader->setAllowRenameFiles(true);
+                    $uploader->setFilesDispersion(true);
+
+                    /** @var \Magento\Framework\Filesystem\Directory\Read $mediaDirectory */
+                    $mediaDirectory = $this->_objectManager->get('Magento\Framework\Filesystem')
+                        ->getDirectoryRead(DirectoryList::MEDIA);
+                    $result = $uploader->save(
+                        $mediaDirectory->getAbsolutePath($this->_mediaDir)
+                    );
+                    $data['book'] = $this->_mediaDir . $result['file'];
+                } catch (\Exception $e) {
+                    if ($e->getCode() == 0) {
+                        $this->messageManager->addError($e->getMessage());
+                    }
+                }
+            } else {
+                if (isset($data['book']) && isset($data['book']['value'])) {
+                    if (isset($data['book']['delete'])) {
+                        $data['book'] = null;
+                        $data['delete_book'] = true;
+                    } elseif (isset($data['book']['value'])) {
+                        $data['book'] = $data['book']['value'];
+                    } else {
+                        $data['book'] = null;
+                    }
+                }
             }
 
             $model->setData($data);
@@ -95,10 +136,10 @@ class Save extends \Magento\Backend\App\Action
 
                 $model->save();
                 $this->messageManager->addSuccess(__('You saved the Flip.'));
-                $this->dataPersistor->clear('book_flip_flip');
+                $this->dataPersistor->clear('flipbook_flip');
         
                 if ($this->getRequest()->getParam('back')) {
-                    return $resultRedirect->setPath('*/*/edit', ['flip_id' => $model->getId()]);
+                    return $resultRedirect->setPath('*/*/edit', ['entity_id' => $model->getId()]);
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (LocalizedException $e) {
@@ -107,8 +148,8 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addErrorMessage($e, __('Something went wrong while saving the Flip.'));
             }
         
-            $this->dataPersistor->set('book_flip_flip', $data);
-            return $resultRedirect->setPath('*/*/edit', ['flip_id' => $this->getRequest()->getParam('flip_id')]);
+            $this->dataPersistor->set('flipbook_flip', $data);
+            return $resultRedirect->setPath('*/*/edit', ['entity_id' => $this->getRequest()->getParam('entity_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }

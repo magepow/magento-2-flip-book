@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Adminhtml\Flip;
+namespace Magepow\Flipbook\Controller\Adminhtml\Flip;
 
-class Edit extends \Magepow\FlipBook\Controller\Adminhtml\Flip
+class Edit extends \Magepow\Flipbook\Controller\Adminhtml\Flip
 {
 
     protected $resultPageFactory;
@@ -30,8 +30,8 @@ class Edit extends \Magepow\FlipBook\Controller\Adminhtml\Flip
     public function execute()
     {
         // 1. Get ID and create model
-        $id = $this->getRequest()->getParam('flip_id');
-        $model = $this->_objectManager->create('Magepow\FlipBook\Model\Flip');
+        $id = $this->getRequest()->getParam('entity_id');
+        $model = $this->_objectManager->create('Magepow\Flipbook\Model\Flip');
         
         // 2. Initial checking
         if ($id) {
@@ -43,7 +43,7 @@ class Edit extends \Magepow\FlipBook\Controller\Adminhtml\Flip
                 return $resultRedirect->setPath('*/*/');
             }
         }
-        $this->_coreRegistry->register('book_flip_flip', $model);
+        $this->_coreRegistry->register('flipbook_flip', $model);
         
         // 5. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */

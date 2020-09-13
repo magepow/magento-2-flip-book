@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Magepow\FlipBook\Model\ResourceModel\Flip;
+namespace Magepow\Flipbook\Model\ResourceModel\Flip;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -14,8 +14,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     protected function _construct()
     {
         $this->_init(
-            'Magepow\FlipBook\Model\Flip',
-            'Magepow\FlipBook\Model\ResourceModel\Flip'
+            'Magepow\Flipbook\Model\Flip',
+            'Magepow\Flipbook\Model\ResourceModel\Flip'
         );
     }
 }

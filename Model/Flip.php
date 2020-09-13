@@ -1,8 +1,8 @@
 <?php
 
-namespace Magepow\FlipBook\Model;
+namespace Magepow\Flipbook\Model;
 
-use Magepow\FlipBook\Api\Data\FlipInterface;
+use Magepow\Flipbook\Api\Data\FlipInterface;
 
 class Flip extends \Magento\Framework\Model\AbstractModel implements FlipInterface
 {
@@ -12,26 +12,26 @@ class Flip extends \Magento\Framework\Model\AbstractModel implements FlipInterfa
      */
     protected function _construct()
     {
-        $this->_init('Magepow\FlipBook\Model\ResourceModel\Flip');
+        $this->_init('Magepow\Flipbook\Model\ResourceModel\Flip');
     }
 
     /**
      * Get flip_id
      * @return string
      */
-    public function getFlipId()
+    public function getEntityId()
     {
-        return $this->getData(self::FLIP_ID);
+        return $this->getData(self::ENTITY_ID);
     }
 
     /**
-     * Set flip_id
-     * @param string $flipId
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * Set entity_id
+     * @param string $entityId
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
-    public function setFlipId($flipId)
+    public function setEntityId($entityId)
     {
-        return $this->setData(self::FLIP_ID, $flipId);
+        return $this->setData(self::ENTITY_ID, $entityId);
     }
 
     /**
@@ -46,30 +46,11 @@ class Flip extends \Magento\Framework\Model\AbstractModel implements FlipInterfa
     /**
      * Set title
      * @param string $title
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
     public function setTitle($title)
     {
         return $this->setData(self::TITLE, $title);
-    }
-
-    /**
-     * Get category
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->getData(self::CATEGORY);
-    }
-
-    /**
-     * Set category
-     * @param string $category
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
-     */
-    public function setCategory($category)
-    {
-        return $this->setData(self::CATEGORY, $category);
     }
 
     /**
@@ -84,7 +65,7 @@ class Flip extends \Magento\Framework\Model\AbstractModel implements FlipInterfa
     /**
      * Set author
      * @param string $author
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
     public function setAuthor($author)
     {
@@ -92,21 +73,21 @@ class Flip extends \Magento\Framework\Model\AbstractModel implements FlipInterfa
     }
 
     /**
-     * Get upload
+     * Get book
      * @return string
      */
-    public function getUpload()
+    public function getBook()
     {
-        return $this->getData(self::UPLOAD);
+        return $this->getData(self::BOOK);
     }
 
     /**
-     * Set upload
-     * @param string $upload
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * Set book
+     * @param string $book
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
-    public function setUpload($upload)
+    public function setBook($book)
     {
-        return $this->setData(self::UPLOAD, $upload);
+        return $this->setData(self::BOOK, $book);
     }
 }

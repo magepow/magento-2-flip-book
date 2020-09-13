@@ -1,32 +1,30 @@
 <?php
 
 
-namespace Magepow\FlipBook\Api\Data;
+namespace Magepow\Flipbook\Api\Data;
 
 interface FlipInterface
 {
 
-    const FLIP_ID = 'flip_id';
-    const UPLOAD = 'upload';
-    const TITLE = 'title';
-    const AUTHOR = 'author';
-    const CATEGORY = 'category';
-
+    const ENTITY_ID = 'entity_id';
+    const BOOK      = 'book';
+    const TITLE     = 'title';
+    const AUTHOR    = 'author';
 
     /**
      * Get flip_id
      * @return string|null
      */
     
-    public function getFlipId();
+    public function getEntityId();
 
     /**
      * Set flip_id
      * @param string $flip_id
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
     
-    public function setFlipId($flipId);
+    public function setEntityId($entityId);
 
     /**
      * Get title
@@ -38,25 +36,10 @@ interface FlipInterface
     /**
      * Set title
      * @param string $title
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
     
     public function setTitle($title);
-
-    /**
-     * Get category
-     * @return string|null
-     */
-    
-    public function getCategory();
-
-    /**
-     * Set category
-     * @param string $category
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
-     */
-    
-    public function setCategory($category);
 
     /**
      * Get author
@@ -68,23 +51,23 @@ interface FlipInterface
     /**
      * Set author
      * @param string $author
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
     
     public function setAuthor($author);
 
     /**
-     * Get upload
+     * Get book
      * @return string|null
      */
     
-    public function getUpload();
+    public function getBook();
 
     /**
-     * Set upload
-     * @param string $upload
-     * @return Magepow\FlipBook\Api\Data\FlipInterface
+     * Set book
+     * @param string $book
+     * @return Magepow\Flipbook\Api\Data\FlipInterface
      */
     
-    public function setUpload($upload);
+    public function setBook($book);
 }

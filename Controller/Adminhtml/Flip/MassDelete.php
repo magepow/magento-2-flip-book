@@ -1,13 +1,13 @@
 <?php
 
-namespace Magepow\FlipBook\Controller\Adminhtml\Flip;
+namespace Magepow\Flipbook\Controller\Adminhtml\Flip;
 
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 use Sample\Gridpart2\Model\ResourceModel\Template\CollectionFactory;
 
-class MassDelete extends \Magepow\FlipBook\Controller\Adminhtml\Flip
+class MassDelete extends \Magepow\Flipbook\Controller\Adminhtml\Flip
 {
     
     /**

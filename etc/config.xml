@@ -3,7 +3,7 @@
     <default>
         <magepow_flipbook>
             <general>
-                <enable>1</enable>
+                <enabled>1</enabled>
             </general>
         </magepow_flipbook>
     </default>

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Magepow\FlipBook\Controller\Adminhtml\Index;
+namespace Magepow\Flipbook\Controller\Adminhtml\Index;
 
 class Index extends \Magento\Backend\App\Action
 {

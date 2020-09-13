@@ -1,13 +1,13 @@
 <?php
 
-namespace Magepow\FlipBook\Ui\Component\Listing\Column;
+namespace Magepow\Flipbook\Ui\Component\Listing\Column;
 
 class FlipActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
-    const URL_PATH_EDIT = 'book_flip/flip/edit';
-    const URL_PATH_DELETE = 'book_flip/flip/delete';
-    const URL_PATH_DETAILS = 'book_flip/flip/details';
+    const URL_PATH_EDIT = 'flipbook/flip/edit';
+    const URL_PATH_DELETE = 'flipbook/flip/delete';
+    const URL_PATH_DETAILS = 'flipbook/flip/details';
     protected $urlBuilder;
 
     /**
@@ -38,13 +38,13 @@ class FlipActions extends \Magento\Ui\Component\Listing\Columns\Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                if (isset($item['flip_id'])) {
+                if (isset($item['entity_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'flip_id' => $item['flip_id']
+                                    'entity_id' => $item['entity_id']
                                 ]
                             ),
                             'label' => __('Edit')
@@ -53,7 +53,7 @@ class FlipActions extends \Magento\Ui\Component\Listing\Columns\Column
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
-                                    'flip_id' => $item['flip_id']
+                                    'entity_id' => $item['entity_id']
                                 ]
                             ),
                             'label' => __('Delete'),
