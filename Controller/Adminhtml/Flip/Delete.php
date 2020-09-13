@@ -16,7 +16,7 @@ class Delete extends \Magepow\Flipbook\Controller\Adminhtml\Flip
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         // check if we know what should be deleted
-        $id = $this->getRequest()->getParam('flip_id');
+        $id = $this->getRequest()->getParam('entity_id');
         if ($id) {
             try {
                 // init model and delete
@@ -31,7 +31,7 @@ class Delete extends \Magepow\Flipbook\Controller\Adminhtml\Flip
                 // display error message
                 $this->messageManager->addError($e->getMessage());
                 // go back to edit form
-                return $resultRedirect->setPath('*/*/edit', ['flip_id' => $id]);
+                return $resultRedirect->setPath('*/*/edit', ['entity_id' => $id]);
             }
         }
         // display error message
