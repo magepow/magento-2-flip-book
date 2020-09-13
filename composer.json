@@ -1,25 +1,34 @@
 {
-    "name": "book/module-flip",
-    "description": "",
-    "license": "proprietary",
-    "authors": [
-        {
-            "name": "Mage2Gen",
-            "email": "info@mage2gen.com"
-        },
-        {
-            "name": "Prince Patel",
-            "email": "prince.patel@hiddenbrains.in"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "Book\\Flip\\": ""
-        },
-        "files": [
-            "registration.php"
-        ]
+  "name": "magepow/flipbook",
+  "description": "Magento 2 Flipbook",
+  "require": {
+    "magepow/core": "^1.0.0"
+  },
+  "type": "magento2-module",
+  "autoload": {
+    "files": ["registration.php"],
+    "psr-4": {
+      "Magepow\\Flipbook\\": ""
     }
+  },
+  "authors": [
+    {
+      "name": "Magepow",
+      "email": "support@magepow.com",
+      "homepage": "https://magepow.com",
+      "role": "Technical Support"
+    }
+  ],
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Magepow/Flipbook"
+      ]
+    ]
+  }
 }
