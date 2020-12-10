@@ -7,7 +7,7 @@ Before you continue, ensure you meet the following requirements:
   * You are using a Linux or Mac OS machine. Windows is not currently supported.
 
 
-## 1. Download Magento 2 FLipbook
+## 1. Download Magento 2 Flipbook
 
  ### Install via composer (recommend).
 Run the following commands in Magento 2 root folder:
@@ -18,7 +18,7 @@ php bin/magento setup:static-content:deploy -f
 ```
 
 ## 2. User guide
-   #### Key features of Magento 2 Google Sitemap Extension:
+   #### Key features of Magento 2 Flipbook Extension:
   * It looks like actual content with user-friendly design.
   * Creates both left-to-right and right-to-left transition of pages.
   * Easy to use Navigation bar.
@@ -30,7 +30,7 @@ php bin/magento setup:static-content:deploy -f
   `Login to Magento Admin > Stores > Configuration > Magepow > Flipbook > General > Choose Yes/No to Show or hide Flipbook.`  
   ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/master/media/configflipbook.png)
   ### 2.2. Add new book
-   `Login to Magento Admin > Magepow > Books => Click on **Add New Book**, Create new content and information for the book.`
+   `Login to Magento Admin > Magepow > Books => Click on Add New Book, Create new content and information for the book.`
    ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/master/media/addbook.png)
    * **Name**: The title of the book you want to add.
    * **Thumbnail**: Add image file to your book.
