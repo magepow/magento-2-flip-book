@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="magepow_flipbook_widget" class="Magepow\Flipbook\Block\Widget\Book">
+        <label translate="true">Flip Book Widget</label>
+        <description translate="true">Flip Book</description>
+        <parameters>
+            <parameter name="flipbook_id" xsi:type="select" required="true" source_model="Magepow\Flipbook\Model\Widget\Config\Flip" visible="true" sort_order="0" >
+            <label translate="true">Flip Book Id</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/index.phtml" selected="true">
+                        <label translate="true">Default</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

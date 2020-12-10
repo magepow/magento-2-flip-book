@@ -2,7 +2,7 @@
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 	<body>
 		<referenceContainer name="content">
-			<block ifconfig="magepow_flipbook/general/enabled" class="Magepow\Flipbook\Block\Index\Index" name="index.index" template="index/index.phtml"/>
+			<block ifconfig="magepow_flipbook/general/enabled" class="Magepow\Flipbook\Block\Widget\Index" name="index.index" template="widget/index.phtml"/>
 		</referenceContainer>
 	</body>
 </page>

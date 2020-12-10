@@ -2,23 +2,25 @@
 
 namespace Magepow\Flipbook\Controller\Adminhtml\Flip;
 
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
-use Sample\Gridpart2\Model\ResourceModel\Template\CollectionFactory;
+use Magento\Framework\Controller\ResultFactory;
+use Magepow\Flipbook\Model\ResourceModel\Flip\CollectionFactory;
+use Magento\Framework\App\ResponseInterface;
+use Magepow\Flipbook\Controller\Adminhtml\Flip;
 
-class MassDelete extends \Magepow\Flipbook\Controller\Adminhtml\Flip
+class MassDelete extends \Magento\Backend\App\Action
 {
     
     /**
      * @var Filter
      */
-    protected $filter;
+    protected $_filter;
 
     /**
      * @var CollectionFactory
      */
-    protected $collectionFactory;
+    protected $_collectionFactory;
 
     /**
      * @param Context $context
@@ -27,8 +29,8 @@ class MassDelete extends \Magepow\Flipbook\Controller\Adminhtml\Flip
      */
     public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
     {
-        $this->filter = $filter;
-        $this->collectionFactory = $collectionFactory;
+        $this->_filter = $filter;
+        $this->_collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
     /**
@@ -36,17 +38,16 @@ class MassDelete extends \Magepow\Flipbook\Controller\Adminhtml\Flip
      *
      * @return \Magento\Backend\Model\View\Result\Redirect
      */
-    public function execute()
+   public function execute()
     {
-        
-        $collection = $this->filter->getCollection($this->collectionFactory->create());
+        $collection = $this->_filter->getCollection($this->_collectionFactory->create());
         $collectionSize = $collection->getSize();
 
-        foreach ($collection as $template) {
-            $template->delete();
+        foreach ($collection as $item) {
+            $item->delete();
         }
 
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $collectionSize));
+        $this->messageManager->addSuccess(__('A total of %1 element(s) have been deleted.', $collectionSize));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);

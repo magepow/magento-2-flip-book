@@ -24,9 +24,10 @@ class Save extends \Magento\Backend\App\Action
         \Magento\Framework\App\Request\DataPersistorInterface $dataPersistor,
         \Magento\Framework\App\Filesystem\DirectoryList $directoryList
     ) {
+        $this->coreRegistry = $coreRegistry;
         $this->dataPersistor = $dataPersistor;
         $this->directory_list = $directoryList;
-        parent::__construct($context, $coreRegistry);
+        parent::__construct($context);
     }
 
     /**

@@ -1,8 +1,15 @@
 <?php
+$helper = $this->helper('Magepow\Flipbook\Helper\Data');
+$isEnabled      = $helper->getConfigModule('general/enabled');
 $id = $this->getRequest()->getParam('id');
 $book = $this->getBook($id);
-if(!$id) return;
+if(!$isEnabled) return;
 ?>
+<div class="book-details">
+	<?php if($block->getData('title')): ?>
+	<div class="book-title"><?php echo $block->getData('title'); ?></div>
+<?php endif; ?>
+</div>
 <div class="flipbook-viewport">
 	<div class="container">
 		<div class="flipbook" id="book">
@@ -35,7 +42,4 @@ if(!$id) return;
 	});
 </script>
 
-<div class="book-details">
-	<div class="book-title"><?php echo $book->getTitle(); ?></div>
-</div>
  

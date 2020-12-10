@@ -1,13 +1,14 @@
 <?php 
+$helper = $this->helper('Magepow\Flipbook\Helper\Data');
+$isEnabled      = $helper->getConfigModule('general/enabled');
 $books = $this->getCollection();
-if(!$books) return;
+if(!$isEnabled) return;
 ?>
 <div class="flipbooks">
 <?php foreach ($books as $book): ?>
 	<div class="book-details">
 		<div class="book-thumb">
 			<div class="flip-book effect">
-				<span class="guide"><a href="<?php echo $this->getUrl('flipbook/index/book', array('id' => $book->getEntityId())); ?>"><?= __('Click Here To Open Book') ?></a></span>
 		    	<a href="<?php echo $this->getUrl('flipbook/index/book', array('id' => $book->getEntityId())); ?>"><?php echo $this->getThumbnail($book); ?></a>
 		  	</div>
 		</div>

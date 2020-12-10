@@ -1,28 +1,34 @@
 <?php
 
-namespace Magepow\Flipbook\Block\Index;
+namespace Magepow\Flipbook\Block\Widget;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
 
-	protected $_flipFactory;
+    protected $_flipFactory;
     protected $_urlMedia;
 
-	public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magepow\Flipbook\Model\FlipFactory $flipFactory
-        
+    public function __construct(
+        \Magento\Backend\Block\Template\Context $context, 
+        \Magepow\Flipbook\Model\FlipFactory $flipFactory,
+        array $data = []
     ) {
         $this->_flipFactory = $flipFactory;
-        parent::__construct($context);
+        parent::__construct($context ,$data); 
     }
 
 
     public function getCollection()
-    {
+    { 
+    
+        $data = $this->getData('flip_book');
         $flip = $this->_flipFactory->create();
-        $books = $flip->getCollection();
-        return $books;
+        if ($data) {
+            $books = $flip->getCollection()->addFieldToFilter('entity_id',$data);
+        }else{
+            $books = $flip->getCollection();
+        }
+        return $books; 
     }
 
     public function getBook($id)
@@ -31,7 +37,7 @@ class Index extends \Magento\Framework\View\Element\Template
         $book = $flip->load($id);
         return $book;
     }
-
+    
     public function getThumbnail($book)
     {
         $thumbUrl = $this->getMediaUrl($book->getThumbnail());
