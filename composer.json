@@ -5,12 +5,10 @@
     "magepow/core": "^1.0.0"
   },
   "type": "magento2-module",
-  "autoload": {
-    "files": ["registration.php"],
-    "psr-4": {
-      "Magepow\\Flipbook\\": ""
-    }
-  },
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
   "authors": [
     {
       "name": "Magepow",
@@ -19,16 +17,10 @@
       "role": "Technical Support"
     }
   ],
-  "license": [
-    "OSL-3.0",
-    "AFL-3.0"
-  ],
-  "extra": {
-    "map": [
-      [
-        "*",
-        "Magepow/Flipbook"
-      ]
-    ]
+  "autoload": {
+    "files": ["registration.php"],
+    "psr-4": {
+      "Magepow\\Flipbook\\": ""
+    }
   }
 }
