@@ -39,25 +39,20 @@ class Edit extends Container
         
         parent::_construct();
         
-        if ($this->_isAllowedAction('Magepow_Flipbook::flip_save')) {
-            $this->buttonList->update('save', 'label', __('Save Book'));
-            $this->buttonList->add(
-                'saveandcontinue',
-                [
-                    'label' => __('Save and Continue'),
-                    'class' => 'save',
-                    'data_attribute' => [
-                        'mage-init' => [
-                            'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
-                        ],
-                    ]
-                ],
-                -300
-            );
-
-        } else {
-            $this->buttonList->remove('save');
-        }
+        $this->buttonList->update('save', 'label', __('Save Book'));
+        $this->buttonList->add(
+            'saveandcontinue',
+            [
+                'label' => __('Save and Continue'),
+                'class' => 'save',
+                'data_attribute' => [
+                    'mage-init' => [
+                        'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
+                    ],
+                ]
+            ],
+            -300
+        );
  
     }
  

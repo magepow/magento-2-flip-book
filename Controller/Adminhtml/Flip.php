@@ -7,7 +7,7 @@ abstract class Flip extends \Magento\Backend\App\Action
 {
 
     protected $_coreRegistry;
-    const ADMIN_RESOURCE = 'Magepow_Flipbook::top_level';
+    const ADMIN_RESOURCE = 'Magepow_Flipbook::flipbook';
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -29,7 +29,7 @@ abstract class Flip extends \Magento\Backend\App\Action
      */
     public function initPage($resultPage)
     {
-        $resultPage->setActiveMenu('Magepow_Flipbook::top_level')
+        $resultPage->setActiveMenu('Magepow_Flipbook::flipbook')
             ->addBreadcrumb(__('Book'), __('Book'))
             ->addBreadcrumb(__('Flip'), __('Flip'));
         return $resultPage;
