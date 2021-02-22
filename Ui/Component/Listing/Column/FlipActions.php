@@ -39,6 +39,7 @@ class FlipActions extends \Magento\Ui\Component\Listing\Columns\Column
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
                 if (isset($item['entity_id'])) {
+                   $title = $item['title'];
                     $item[$this->getData('name')] = [
                         'edit' => [
                             'href' => $this->urlBuilder->getUrl(
@@ -58,8 +59,8 @@ class FlipActions extends \Magento\Ui\Component\Listing\Columns\Column
                             ),
                             'label' => __('Delete'),
                             'confirm' => [
-                                'title' => __('Delete "${ $.$data.title }"'),
-                                'message' => __('Are you sure you wan\'t to delete a "${ $.$data.title }" record?')
+                                'title' => __("Delete {$title}"),
+                                'message' => __("Are you sure you want to delete {$title} record?")
                             ]
                         ]
                     ];
