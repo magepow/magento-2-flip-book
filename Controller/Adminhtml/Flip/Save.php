@@ -78,6 +78,7 @@ class Save extends \Magento\Backend\App\Action
                 } catch (\Exception $e) {
                     if ($e->getCode() == 0) {
                         $this->messageManager->addError($e->getMessage());
+                        return $resultRedirect->setPath('*/*/edit', ['entity_id' => $this->getRequest()->getParam('entity_id')]);// RETURN to turn off the error
                     }
                 }
             } else {
@@ -116,6 +117,7 @@ class Save extends \Magento\Backend\App\Action
                 } catch (\Exception $e) {
                     if ($e->getCode() == 0) {
                         $this->messageManager->addError($e->getMessage());
+                         return $resultRedirect->setPath('*/*/edit', ['entity_id' => $this->getRequest()->getParam('entity_id')]);// RETURN to turn off the error
                     }
                 }
             } else {
