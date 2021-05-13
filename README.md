@@ -4,8 +4,10 @@
 Before you continue, ensure you meet the following requirements:
 
   * You have installed Magento 2.
-  * You are using a Linux or Mac OS machine. Windows is not currently supported.
 
+[![Latest Stable Version](https://poser.pugx.org/magepow/flipbook/v/stable)](https://packagist.org/packages/magepow/flipbook)
+[![Total Downloads](https://poser.pugx.org/magepow/flipbook/downloads)](https://packagist.org/packages/magepow/flipbook)
+[![Daily Downloads](https://poser.pugx.org/magepow/flipbook/d/daily)](https://packagist.org/packages/magepow/flipbook)
 
 ## 1. Download Magento 2 Flipbook
 
