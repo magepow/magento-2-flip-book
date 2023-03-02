@@ -1,4 +1,6 @@
-# Magento 2 Flipbook
+[<img src="https://github.com/magepow/themeforest/blob/master/shopify/shopify_affiliate.jpg" >](https://shopify.pxf.io/VyL446)
+
+## Magento 2 Flipbook
 **Magento 2 flipbook** is a booklet with a series of images that very gradually change from one page to the next so that when the pages are viewed in quick succession, the images appear to animate by simulating motion or some other change. Often, flipbooks are illustrated books for children, but may also be geared toward adults and employ a series of photographs rather than drawings. Flipbooks are not always separate books but may appear as an added feature in ordinary books or magazines, frequently, using the page corners. Software packages and websites are also available that convert digital video files into custom-made flipbooks.
 
 Before you continue, ensure you meet the following requirements:
