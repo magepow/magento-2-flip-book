@@ -11,7 +11,9 @@ class Save extends \Magento\Backend\App\Action
 
     protected $_mediaDir = 'magepow/flipbook';
 
+    protected $coreRegistry;
     protected $dataPersistor;
+    protected $directory_list;
 
 
     /**
