@@ -32,10 +32,10 @@ php bin/magento setup:static-content:deploy -f
   ### 2.1. General configuration
 
   `Login to Magento Admin > Stores > Configuration > Magepow > Flipbook > General > Choose Yes/No to Show or hide Flipbook.`  
-  ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/master/media/configflipbook.png)
+  ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/main/media/configflipbook.png)
   ### 2.2. Add new book
    `Login to Magento Admin > Magepow > Books => Click on Add New Book, Create new content and information for the book.`
-   ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/master/media/addbook.png)
+   ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/main/media/addbook.png)
    * **Name**: The title of the book you want to add.
    * **Thumbnail**: Add image file to your book.
    * **Book**: Add my book file that you want to add here as a file pdf.
@@ -44,13 +44,13 @@ php bin/magento setup:static-content:deploy -f
   ### 2.3. Add new widgets 
 
   `Login to Magento Admin > Content > Widgets > Add Widget > Setting > Setting type and design theme > Continue.`
-  ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/master/media/widget.png)
+  ![Image of Magento admin config](https://github.com/magepow/magento2-flipbook/blob/main/media/widget.png)
   `Login to Magento Admin > Content > Widgets > Add Widget > Storefront Properties > Setting widget and save.`
   * Add widget title, assign store views, sort order and in layout updates to display on pages the example shown below.
-  ![Image of Magento storefront](https://github.com/magepow/magento2-flipbook/blob/master/media/settingwidget.png)
+  ![Image of Magento storefront](https://github.com/magepow/magento2-flipbook/blob/main/media/settingwidget.png)
   On the web page click on the picture of the book being displayed on the installed page.
-  ![Image of Magento storefront](https://github.com/magepow/magento2-flipbook/blob/master/media/widgetstorefront.png)
-  ![Image of Magento storefront](https://github.com/magepow/magento2-flipbook/blob/master/media/result-front.png)
+  ![Image of Magento storefront](https://github.com/magepow/magento2-flipbook/blob/main/media/widgetstorefront.png)
+  ![Image of Magento storefront](https://github.com/magepow/magento2-flipbook/blob/main/media/result-front.png)
   We can also query the URL **https://you-domain/flipbook** to display all created flipbooks.
  ## Donation
 
