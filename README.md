@@ -3,13 +3,13 @@
 ## Magento 2 Flipbook
 **Magento 2 flipbook** is a booklet with a series of images that very gradually change from one page to the next so that when the pages are viewed in quick succession, the images appear to animate by simulating motion or some other change. Often, flipbooks are illustrated books for children, but may also be geared toward adults and employ a series of photographs rather than drawings. Flipbooks are not always separate books but may appear as an added feature in ordinary books or magazines, frequently, using the page corners. Software packages and websites are also available that convert digital video files into custom-made flipbooks.
 
-Before you continue, ensure you meet the following requirements:
-
-  * You have installed Magento 2.
+* [Overview and Demo Magento FlipBook PDF Viewer Pro](https://magepow.com/magento-3d-flip-book-pdf-viewer.html)
 
 [![Latest Stable Version](https://poser.pugx.org/magepow/flipbook/v/stable)](https://packagist.org/packages/magepow/flipbook)
 [![Total Downloads](https://poser.pugx.org/magepow/flipbook/downloads)](https://packagist.org/packages/magepow/flipbook)
 [![Daily Downloads](https://poser.pugx.org/magepow/flipbook/d/daily)](https://packagist.org/packages/magepow/flipbook)
+
+Before you continue, ensure you meet the following requirements:
 
 ## 1. Download Magento 2 Flipbook
 
